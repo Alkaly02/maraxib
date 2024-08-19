@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useEffect, useState } from "react";
 import axios from "../../lib/axios";
 import ProductCard from "./ProductCard";
