@@ -46,7 +46,7 @@ const FeaturedCollection: React.FC<FeaturedCollectionProps> = ({
           const produits = (page ? category.produits.slice(0, 10) : category.produits).map((product: any) => {
             const message = `Je suis intéressé par l'achat du ${product.libelle} au prix de ${product.prix}€. Pourriez-vous me donner plus de détails ?`;
             const encodedMessage = encodeURIComponent(message);
-            const lien_whatsapp = `https://wa.me/1234567890?text=${encodedMessage}`;
+            const lien_whatsapp = `https://wa.me/776719785?text=${encodedMessage}`;
   
             return {
               id: product.id,
