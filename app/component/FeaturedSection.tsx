@@ -42,15 +42,12 @@ const FeaturedCollection: React.FC<FeaturedCollectionProps> = ({
     axios
       .get(`/produits/${typeProduit}`)
       .then((response: { data: any[] }) => {
-        const fetchedCategories = response.data.map((category: any) => ({
-          id: category.id,
-          libelle: category.libelle,
-          produits: (page? category.produits.slice(0, 10) : category.produits).map((product: any) => {
-            const message = `Je suis intéressé par l'achat du ${product.libelle} au prix de ${product.prix}€.?`;
-;
+        const fetchedCategories = response.data.map((category: any) => {
+          const produits = (page ? category.produits.slice(0, 10) : category.produits).map((product: any) => {
+            const message = `Je suis intéressé par l'achat du ${product.libelle} au prix de ${product.prix}€. Pourriez-vous me donner plus de détails ?`;
             const encodedMessage = encodeURIComponent(message);
-            const lien_whatsapp = `https://wa.me/776719785?text=${encodedMessage}`;
-
+            const lien_whatsapp = `https://wa.me/1234567890?text=${encodedMessage}`;
+  
             return {
               id: product.id,
               image: `https://api.maraxib.fewnu.app/storage/${product.image}`,
@@ -59,8 +56,15 @@ const FeaturedCollection: React.FC<FeaturedCollectionProps> = ({
               rating: 4,
               lien_whatsapp,
             };
-          }),
-        }));
+          });
+  
+          return {
+            id: category.id,
+            libelle: category.libelle,
+            produits, // Use the processed products array
+          };
+        });
+  
         setCategories(fetchedCategories);
         setFilteredCategories(fetchedCategories); // Initially, set filtered to fetched
         setLoading(false);
@@ -71,6 +75,7 @@ const FeaturedCollection: React.FC<FeaturedCollectionProps> = ({
         setLoading(false);
       });
   }, [typeProduit]);
+  
 
   // Filter products based on searchQuery
   useEffect(() => {
