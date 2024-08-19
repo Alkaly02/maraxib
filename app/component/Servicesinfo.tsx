@@ -11,7 +11,7 @@ const ServiceInfo: React.FC = () => {
             <MdDeliveryDining className="size-12  bg-black text-white rounded-full px-2 py-2" />
             </div>
             <h3 className="text-lg font-bold">LIVRAISON RAPIDE</h3>
-            <p>Livraison gratuite pour toute commande 10 000</p>
+            <p>Livraison rapide partout au Senegal</p>
           </div>
           <div className="w-full md:w-1/3 text-center mb-8 md:mb-0">
             <div className="flex justify-center mb-4">
