@@ -1,10 +1,7 @@
-"use client";
-
 import React, { useEffect, useState } from "react";
 import axios from "../../lib/axios";
 import ProductCard from "./ProductCard";
 import { ThreeDot } from "react-loading-indicators";
-
 
 interface Product {
   id: number;
@@ -46,14 +43,21 @@ const FeaturedCollection: React.FC<FeaturedCollectionProps> = ({
         const fetchedCategories = response.data.map((category: any) => ({
           id: category.id,
           libelle: category.libelle,
-          produits: (page? category.produits.slice(0, 10) : category.produits).map((product: any) => ({
-            id: product.id,
-            image: `https://api.maraxib.fewnu.app/storage/${product.image}`,
-            libelle: product.libelle,
-            prix: product.prix,
-            rating: 4,
-            lien_whatsapp: ` ${product.lien_whatsapp}`,
-          })),
+          produits: (page? category.produits.slice(0, 10) : category.produits).map((product: any) => {
+            const message = `Je suis intéressé par l'achat du ${product.libelle} au prix de ${product.prix}€.?`;
+;
+            const encodedMessage = encodeURIComponent(message);
+            const lien_whatsapp = `https://wa.me/776719785?text=${encodedMessage}`;
+
+            return {
+              id: product.id,
+              image: `https://api.maraxib.fewnu.app/storage/${product.image}`,
+              libelle: product.libelle,
+              prix: product.prix,
+              rating: 4,
+              lien_whatsapp,
+            };
+          }),
         }));
         setCategories(fetchedCategories);
         setFilteredCategories(fetchedCategories); // Initially, set filtered to fetched
@@ -114,13 +118,12 @@ const FeaturedCollection: React.FC<FeaturedCollectionProps> = ({
                 className="w-full sm:w-1/2 md:w-1/5 lg:w-1/6 p-1 mb-2"
               >
                 <ProductCard
-                  lien_watshapp={"https://wa.me/776719785?text=Bienvenu dans votre boutique islamique Maraxib Store"}
+                  lien_watshapp={product.lien_whatsapp}
                   {...product}
                   image={product.image}
                   libelle={product.libelle}
                   prix={product.prix}
                 />
-                
               </div>
             ))}
           </div>
