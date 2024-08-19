@@ -114,7 +114,7 @@ const FeaturedCollection: React.FC<FeaturedCollectionProps> = ({
                 className="w-full sm:w-1/2 md:w-1/5 lg:w-1/6 p-1 mb-2"
               >
                 <ProductCard
-                  lien_watshapp={"https://wa.me/778666064?text=Bienvenu"}
+                  lien_watshapp={"https://wa.me/776719785?text=Bienvenu dans votre boutique islamique Maraxib Store"}
                   {...product}
                   image={product.image}
                   libelle={product.libelle}
