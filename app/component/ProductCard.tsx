@@ -46,7 +46,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ image, libelle, prix, rating,
             <FaWhatsapp className="w-10 h-10" />
           </a>
         </div>
-        <h3 className="text-sm text-nowrap font-bold">{libelle}</h3>
+        <h3 className="text-sm flex flex-nowrap font-bold">{libelle}</h3>
         <p className="text-gray-700 text-sm">{prix} Fcfa</p>
       </div>
     </div>
