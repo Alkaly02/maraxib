@@ -101,7 +101,7 @@ const Page: React.FC = () => {
  <SearchBar onSearch={handleSearch} />
  </div>
  
- <FeaturedCollection typeProduit='accessoire' className="fade-in" searchQuery={searchQuery}/>
+ <FeaturedCollection typeProduit='accessoire' className="" searchQuery={searchQuery}/>
  <Servicesinfo/>
  <Footer className="fade-in"/>
 

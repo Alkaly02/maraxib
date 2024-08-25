@@ -188,7 +188,7 @@ const Page: React.FC = () => {
       </div>
       <FeaturedCollection
         typeProduit="femme"
-        className="fade-in"
+        className=""
        
 
 
